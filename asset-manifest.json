@@ -1,0 +1,18 @@
+{
+  "umi.css": "/umi.css",
+  "umi.js": "/umi.js",
+  "img/favicon.ico": "/img/favicon.ico",
+  "img/icon128.png": "/img/icon128.png",
+  "img/icon16.png": "/img/icon16.png",
+  "img/icon48.png": "/img/icon48.png",
+  "img/logo.svg": "/img/logo.svg",
+  "img/solar.svg": "/img/solar.svg",
+  "index.html": "/index.html",
+  "manifest.json": "/manifest.json",
+  "static/fontawesome-webfont.ttf?v=4.7.0": "/static/fontawesome-webfont.1e59d233.ttf",
+  "static/fontawesome-webfont.woff2?v=4.7.0": "/static/fontawesome-webfont.20fd1704.woff2",
+  "static/fontawesome-webfont.eot?v=4.7.0": "/static/fontawesome-webfont.8b43027f.eot",
+  "static/fontawesome-webfont.svg?v=4.7.0": "/static/fontawesome-webfont.c1e38fd9.svg",
+  "static/fontawesome-webfont.woff?v=4.7.0": "/static/fontawesome-webfont.f691f37e.woff",
+  "token/index.html": "/token/index.html"
+}
