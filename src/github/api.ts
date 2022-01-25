@@ -5,7 +5,7 @@ import { useModel } from 'umi';
 
 const { setLocal, getLocal } = store;
 
-// 一分钟 
+// 一分钟
 const oneMinutes = 60 * 1000;
 // 一小时
 const oneHours = 60 * oneMinutes;
@@ -50,7 +50,7 @@ export const useTrending = () => {
 
   const req = async (data: any = {}) => {
     let query = { language: language, range: range };
-    const q = transformQuery(query)
+    const q = transformQuery(query);
     const cacheResult = getLocal(q);
     if (cacheResult) {
       setState((draft) => {
@@ -61,21 +61,30 @@ export const useTrending = () => {
     setState((draft) => {
       draft.loading = true;
     });
-    const res = await octokit.request(
-      `GET /search/repositories?q=${q}`,
-      {
+
+    try {
+      const res = await octokit.request(`GET /search/repositories?q=${q}`, {
         sort: 'stars',
         order: 'desc',
-      },
-    );
+      });
 
-    console.log(res);
+      console.log(res);
+      console.log(
+        res.headers['x-ratelimit-remaining'],
+        'x-ratelimit-remaining',
+      );
+      console.log(res.data.items, 'res.data.items');
 
-    if (res.data.items) {
-      setLocal(q, res.data.items, oneHours)
+      if (res.data.items) {
+        setLocal(q, res.data.items, oneHours);
+        setState((draft) => {
+          draft.loading = false;
+          draft.dataList = res.data.items;
+        });
+      }
+    } catch (error) {
       setState((draft) => {
         draft.loading = false;
-        draft.dataList = res.data.items;
       });
     }
 

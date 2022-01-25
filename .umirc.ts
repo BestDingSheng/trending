@@ -17,4 +17,6 @@ export default defineConfig({
   request: {
     dataField: 'data',
   },
+  exportStatic: {},
+  manifest: {},
 });
