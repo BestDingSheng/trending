@@ -5,29 +5,28 @@ import { useTrending } from '@/github';
 import TopNav from '@/components/top-nav';
 import Loading from '@/components/loading';
 import Token from '@/components/token';
-import Grid from '@/components/grid'
-
+import Grid from '@/components/grid';
 
 export default function IndexPage() {
   const { state, setState } = useModel('globModel');
   const { search, setSearch } = useModel('optionsModel');
 
   const { language, range } = search;
-  const { dataList, loading } = state;
+  const { dataList, loading, error } = state;
   const [fetch] = useTrending();
   useEffect(() => {
     fetch();
   }, [range, language]);
 
   if (loading) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
 
   return (
-    <Fragment>
-      <OptionsButton></OptionsButton>
-      <Token></Token>
-      <Grid dataList={dataList} ></Grid>
-    </Fragment>
+    <>
+      <OptionsButton />
+      {error && <Token />}
+      <Grid dataList={dataList} />
+    </>
   );
 }

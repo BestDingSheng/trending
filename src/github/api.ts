@@ -10,17 +10,17 @@ const oneMinutes = 60 * 1000;
 // 一小时
 const oneHours = 60 * oneMinutes;
 
-export type transformFilters = {
+export interface transformFilters {
   language?: string;
   range?: string;
-};
-export type ghSearchQuery = {
+}
+export interface ghSearchQuery {
   q: string;
   sort: 'stars';
   order: 'desc';
-};
+}
 
-const getStart = (type: string = 'weekly') => {
+const getStart = (type = 'weekly') => {
   type = type || 'weekly';
   const range: any = {
     yearly: dayjs().subtract(1, 'year').format('YYYY-MM-DD'),
@@ -49,7 +49,7 @@ export const useTrending = () => {
   const { language, range } = search;
 
   const req = async (data: any = {}) => {
-    let query = { language: language, range: range };
+    const query = { language, range };
     const q = transformQuery(query);
     const cacheResult = getLocal(q);
     if (cacheResult) {
@@ -85,6 +85,7 @@ export const useTrending = () => {
     } catch (error) {
       setState((draft) => {
         draft.loading = false;
+        draft.error = true;
       });
     }
 

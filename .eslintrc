@@ -1,4 +1,13 @@
 {
-    "extends": "umi"
-  }
-  
+  "root": true,
+  "extends": ["sh"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"], // Your TypeScript files extension
+      "extends": ["sh/react", "sh/typescript", "react/jsx-runtime"],
+      "parserOptions": {
+        "project": ["./tsconfig.json"], // Specify it only for TypeScript files
+      },
+    },
+  ],
+}

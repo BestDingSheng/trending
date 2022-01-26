@@ -4,6 +4,7 @@ import { useImmer } from 'use-immer';
 const initState = {
   dataList: [],
   loading: false,
+  error: false,
 };
 
 export default function optionsModel() {

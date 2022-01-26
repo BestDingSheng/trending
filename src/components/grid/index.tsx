@@ -8,7 +8,7 @@ const Grid = (props) => {
       {dataList.map((item) => {
         return (
           <Col className="gutter-row" span={8} key={item.id}>
-            <GridItem repository={item}></GridItem>
+            <GridItem repository={item} />
           </Col>
         );
       })}
