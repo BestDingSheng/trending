@@ -7,7 +7,15 @@ const Grid = (props) => {
     <Row gutter={16}>
       {dataList.map((item) => {
         return (
-          <Col className="gutter-row" span={8} key={item.id}>
+          <Col
+            className="gutter-row"
+            span={8}
+            xs={24}
+            sm={24}
+            md={12}
+            lg={8}
+            key={item.id}
+          >
             <GridItem repository={item} />
           </Col>
         );

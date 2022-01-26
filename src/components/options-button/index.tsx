@@ -9,6 +9,13 @@ const DivButton = styled.div`
   button {
     margin-right: 10px;
   }
+  /* sm */
+  @media (max-width: 576px) {
+    text-align: left;
+    button {
+      margin-bottom: 10px;
+    }
+  }
 `;
 
 const OptionsButton = () => {
